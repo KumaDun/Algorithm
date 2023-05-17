@@ -1,6 +1,6 @@
 # Algorithm
 Algorithm Reviewing
-MergeSort:
+* MergeSort:
 ```
 merge(A, B):
 	C = new array[len(A) + len(B)]
