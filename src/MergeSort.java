@@ -14,11 +14,11 @@ public class MergeSort {
     }
 
     private static void splitAndMerge(int[] intArray, int startPos, int endPos) {
-        System.out.println("startPos " + startPos);
-        System.out.println("endPos " + endPos);
+//        System.out.println("startPos " + startPos);
+//        System.out.println("endPos " + endPos);
         if (startPos< endPos) {
             int midPos = (startPos + endPos) /2;
-            System.out.println("midPos " + midPos);
+//            System.out.println("midPos " + midPos);
             splitAndMerge(intArray,startPos,midPos);
             splitAndMerge(intArray,midPos+1,endPos);
             merge(intArray,startPos,midPos,endPos);
