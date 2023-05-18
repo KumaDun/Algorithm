@@ -1,6 +1,6 @@
 # Algorithm
 Algorithm Reviewing
-* MergeSort:
+## MergeSort:
 ```
 merge(A, B):
 	C = new array[len(A) + len(B)]
@@ -28,3 +28,19 @@ rec-mergesort(A, lo, hi):
 	rec-mergesort(A, mid+1,hi)
 	C = merge(A[lo:mid],A[mid+1:hi])
 ```
+## Binary Search
+$$ T(n) = T(\frac{n}{2}) + 1 \in O(\log n)$$
+*Apply Master Theorem a=1, b=2, c=0 and a = b^c*
+```
+BinarySearch(𝐴, val, lo, hi): 
+	if hi<lo
+		return -1
+mid ← (lo + hi) / 2
+if 𝐴[mid] > val:
+	return BinarySearch(𝐴, val, lo, mid - 1)
+else if 𝐴[mid] < val:
+	return BinarySearch(𝐴, val, mid + 1, hi)
+else
+	return mid
+# to initially call the function:
+BinarySearch(𝐴, val, 0, len(𝐴) – 1)
