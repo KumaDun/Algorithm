@@ -59,8 +59,4 @@ public class MergeSort {
             System.out.println(array[i]);
         }
     }
-
-    public static void main (String[] args) {
-
-    }
 }

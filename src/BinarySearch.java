@@ -14,9 +14,4 @@ public class BinarySearch<E extends Comparable<E>>{
             return binarySearch(arr, target, mid+1, high);
         }
     }
-
-    public static void main(String[] args) {
-
-    }
-
 }
