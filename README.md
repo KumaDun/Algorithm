@@ -55,15 +55,22 @@ BinarySearch(𝐴, val, 0, len(𝐴) – 1)
 Please copy latex code to 3rd party latex editor to read
 
 1. Any two elements are never compared more than once
-2. If p is the pivot, x<p, y>p, then x and y are never compared
+2. If p is the pivot, $x\lt p$, $y\lt p$, then x and y are never compared
 3. Denote the k th smallest element in the array as ek
-4. X = total # of comparisons, Xij indicates if ei and ej are compared
-5. Then $X = \sum_{1\le i<j \le n}Xij = \sum_{i=1}^n \sum_{j=i+1}^n Pr[X_{ij} = 1]$
+4. X = total \# of comparisons, $X_{ij}$ indicates if $e_i$ and $e_j$ are compared
+5. Then $$X = \sum_{1\le i \lt j \le n}X_{ij} = \sum_{i=1}^n \sum_{j=i+1}^n Pr\[X_{ij}=1\]$$
 6. Which pivot to pick so that $e_i, e_j$ be compared? only when either $e_i$ or $e_j$ are chosen as the pivot (2 total)
 7. Which pivot to pick so that $e_i,e_j$ are not ever be compared? $e_{i+1},e_{i+2},\dots,e_{j-1}$
-8. $E[X_{ij}]=2 \cdot \frac{1}{j-i-1+2}=\frac{2}{j-i+1}$
-9. $$\begin{align}X=\sum_{i=1}^n \sum_{j=i+1}^n Pr[X_{ij} = 1] &= \sum_{d=1}^{n-1} \frac{2(n-d)}{d+1} \,|\, (j-i)=d\\
-&=2n\sum_{d=1}^{n-1}\frac{1}{d+1} - \sum_{d=1}^{n-1}\frac{d}{d+1}\\ \\&= 2nlogn - O(n) \in O(nlogn)\end{align}$$
+8. $E\[X_{ij}\]=2 \cdot \frac{1}{j-i-1+2}=\frac{2}{j-i+1}$
+9. 
+$$
+\begin{align}
+X=\sum_{i=1}^n \sum_{j=i+1}^n Pr\[X_{ij} = 1\] &= \sum_{d=1}^{n-1} \frac{2(n-d)}{d+1} | (j-i)=d \\
+&=2n\sum_{d=1}^{n-1}\frac{1}{d+1} - \sum_{d=1}^{n-1}\frac{d}{d+1}\\
+&= 2nlogn - O(n) \in O(nlogn) \\
+\end{align}
+$$
+
 10. The smaller $j-i$, the higher probability $e_i,e_j$ will be compared, that's why the algorithm saves time
 
 ## Quick Select
@@ -75,7 +82,15 @@ Please copy latex code to 3rd party latex editor to read
 3. Compare and partition all elements into two sets
     * S and L, all elements in S before x, all elements in L after x
     * Denote $x$ be in the $i^{th}$ position
-4. $$\begin{cases} \text{if } k=i \; \text{return } x \\ \text{if } k<i \; \text{recurse on the elements to the left of } x \\ \text{if } k<i \; \text{recurse on the elements to the right of } x\\ \end{cases}$$
+4. 
+$$
+\begin{cases}
+\text{if } k=i  \text{ return } x \\
+\text{if } k\gt i  \text{ recurse on the elements to the left of } x \\
+\text{if } k\lt i  \text{ recurse on the elements to the right of } x\\
+\end{cases}
+$$
+
 
 ### Run Time:
 $O(n)$
@@ -113,5 +128,3 @@ $O(n)$
 3. Bubble down if necessary (**check its new children again** after swap down)
 
 **Heapify is of $O(n)$**, better than building with insertion $O(nlogn)$
-
-
