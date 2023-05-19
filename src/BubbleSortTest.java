@@ -13,11 +13,11 @@ public class BubbleSortTest {
     @Test
     public void sortTestInt(){
         sorter = new BubbleSort<Integer>();
-        sorter.bubbleSort(intArr1);
+        sorter.bubbleSort(intArr1,0,intArr1.length-1);
         Integer[] intArr1Exp = {1,2,3,6,7,9};
         assertArrayEquals(intArr1Exp, intArr1);
 
-        sorter.bubbleSort(intArr2);
+        sorter.bubbleSort(intArr2, 0, intArr2.length-1);
         Integer[] intArr2Exp = {1, 1, 1};
         assertArrayEquals(intArr2Exp, intArr2);
     }
@@ -25,7 +25,7 @@ public class BubbleSortTest {
     @Test
     public void sortTestStr(){
         sorter = new BubbleSort<String>();
-        sorter.bubbleSort(strArr);
+        sorter.bubbleSort(strArr, 0, strArr.length-1);
         String[] strArrExp = {"a","b","banana","c","citrus","d","dandelion"};
         assertArrayEquals(strArrExp,strArr);
     }
@@ -40,7 +40,7 @@ public class BubbleSortTest {
         }
 //        System.out.println("Before sort");
 //        System.out.println(Arrays.toString(intArrLargeScale));
-        sorter.bubbleSort(intArrLargeScale);
+        sorter.bubbleSort(intArrLargeScale,0, intArrLargeScale.length-1);
 //        System.out.println("After sort");
 //        System.out.println(Arrays.toString(intArrLargeScale));
         for (int i=0; i<intArrLargeScale.length-1; i++){

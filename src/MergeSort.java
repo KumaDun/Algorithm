@@ -13,7 +13,7 @@ public class MergeSort {
         splitAndMerge(intArray,0,intArray.length-1);
     }
 
-    private static void splitAndMerge(int[] intArray, int startPos, int endPos) {
+    public static void splitAndMerge(int[] intArray, int startPos, int endPos) {
 //        System.out.println("startPos " + startPos);
 //        System.out.println("endPos " + endPos);
         if (startPos< endPos) {
