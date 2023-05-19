@@ -45,7 +45,7 @@ else
 # to initially call the function:
 BinarySearch(𝐴, val, 0, len(𝐴) – 1)
 ```
-## Quick Search
+## Quick Sort
 ### Idea
 	1. Choose a pivot element x at random
 	2. Compare all elements to the pivot
@@ -64,6 +64,54 @@ Please copy latex code to 3rd party latex editor to read
 8. $E[X_{ij}]=2 \cdot \frac{1}{j-i-1+2}=\frac{2}{j-i+1}$
 9. $$\begin{align}X=\sum_{i=1}^n \sum_{j=i+1}^n Pr[X_{ij} = 1] &= \sum_{d=1}^{n-1} \frac{2(n-d)}{d+1} \,|\, (j-i)=d\\
 &=2n\sum_{d=1}^{n-1}\frac{1}{d+1} - \sum_{d=1}^{n-1}\frac{d}{d+1}\\ \\&= 2nlogn - O(n) \in O(nlogn)\end{align}$$
-10. The smaller $j-i$, the higher proberbility $e_i,e_j$ will be compared, that's why the algorithm saves time
+10. The smaller $j-i$, the higher probability $e_i,e_j$ will be compared, that's why the algorithm saves time
+
+## Quick Select
+* Select the $k^{th}$ smallest element of an array
+* Option1: Use quicksort to sort and then select A[k-1], time requires O(nlogn)
+### Idea:
+1. when partition A, only need to recurse on the side of the $k^{th}$ smallest element
+2. Choose pivot $x$ at random
+3. Compare and partition all elements into two sets
+    * S and L, all elements in S before x, all elements in L after x
+    * Denote $x$ be in the $i^{th}$ position
+4. $$\begin{cases} \text{if } k=i \; \text{return } x \\ \text{if } k<i \; \text{recurse on the elements to the left of } x \\ \text{if } k<i \; \text{recurse on the elements to the right of } x\\ \end{cases}$$
+
+### Run Time:
+$O(n)$
+
+## Priority Queue | MinHeap
+### Operation
+* Insert
+   1. Put to maintain complete tree structure
+   2. Percolate and bubble up
+* Extract min (most priority)
+   1. Extract the root
+   2. Fill the root with the last leaf
+   3. Percolate and bubble down (swap with smaller of children)
+* Decrease key (increase priority)
+### Idea
+* Maintain as a rooted tree
+* key at parent < key at children
+* Use complete binary tree as structure
+* Observation:
+   1. \# of leaves at level $j$ is $2^j$
+   2. A height $h$ complete binary tree has $(2^{h+1}-1)$ nodes (complete, full)
+   3. A tree with one root is of height $0$
+   4. Must have a complete level of leaves at $(h-1)$ level
+
+### Heaps as array (by indexing)
+* For indexing starting at 0
+   * if a node at index $k$, its left child at $2k+1$, its right child at $2k+2$
+   * its parent at $\lfloor \frac{k-1}{2}\rfloor$
+* For indexing starting at 1
+   * if a node at index $k$, its left child at $2k$, its right child at $2k+1$
+   * its parent at $\lfloor \frac{k}{2}\rfloor$
+### Build a heap - Heapify
+1. Build a tree as complete tree initially without considering order
+2. Backwardly check element and its children order (not parent)
+3. Bubble down if necessary (**check its new children again** after swap down)
+
+**Heapify is of $O(n)$**, better than building with insertion $O(nlogn)$
 
 
