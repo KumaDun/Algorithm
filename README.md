@@ -52,8 +52,6 @@ BinarySearch(𝐴, val, 0, len(𝐴) – 1)
 	3. Partition all elements into two sets, S smaller than x, L larger than x
 	4. Recursively sort S and L, let's annote |S|=k
 ### RunTime
-Please copy latex code to 3rd party latex editor to read
-
 1. Any two elements are never compared more than once
 2. If p is the pivot, $x\lt p$, $y\lt p$, then x and y are never compared
 3. Denote the k th smallest element in the array as ek
@@ -107,7 +105,7 @@ $O(n)$
 * Decrease key (increase priority)
 ### Idea
 * Maintain as a rooted tree
-* key at parent < key at children
+* key at parent $\lt$ key at children
 * Use complete binary tree as structure
 * Observation:
    1. \# of leaves at level $j$ is $2^j$
