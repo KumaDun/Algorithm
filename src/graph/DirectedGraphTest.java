@@ -3,7 +3,7 @@ package graph;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.HashMap;
+import java.util.*;
 
 import static org.junit.Assert.*;
 
@@ -74,6 +74,7 @@ public class DirectedGraphTest {
 
     @Test
     public void topologicalSort() {
+        //[3, 2, 4, 5, 6, 1, 0]
         System.out.println(G.getTraverseResultDecreseFinishTime().toString());
         assertTrue(G.isTopological(G.getTraverseResultDecreseFinishTime()));
     }
@@ -84,12 +85,21 @@ public class DirectedGraphTest {
         DirectedGraph G_T = G.getGTransposed();
         assertArrayEquals(new Integer[]{1,3},G_T.getNeighbors(0));
         assertArrayEquals(new Integer[]{6}, G_T.getNeighbors(1));
+        assertArrayEquals(new Integer[]{}, G_T.getNeighbors(3));
         assertArrayEquals(new Integer[]{2}, G_T.getNeighbors(4));
         assertArrayEquals(new Integer[]{2,4}, G_T.getNeighbors(5));
         assertArrayEquals(new Integer[]{0,2,3,5}, G_T.getNeighbors(6));
     }
 
     @Test
-    public void DFStraverse() {
+    public void findSCCTest(){
+        //[3, 2, 4, 5, 6, 1, 0]
+        G.transpose();
+        HashSet<Integer> sccSet = G.findSCC();
+        Iterator it = sccSet.iterator();
+        assertTrue(sccSet.contains(new ArrayList<>(Arrays.asList(6,0,1))));
+//        while(it.hasNext()){
+//            System.out.println(it.next().toString());
+//        }
     }
 }
