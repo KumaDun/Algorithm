@@ -114,17 +114,18 @@ public class DirectedGraph {
             Map.Entry<Integer,Integer[]> entry = mapIt.next();
             int u = entry.getKey();
             Integer[] neighbors = entry.getValue();
-            if (neighbors!= null && neighbors.length>=1) {
-                for (int neighbor: neighbors) {
-                    if (incomingVertices.containsKey(neighbor)){
-                        ArrayList<Integer> neighborIncomingArray = incomingVertices.get(neighbor);
-                        neighborIncomingArray.add(u);
-                    }
-                    else{
-                        ArrayList<Integer> newArr = new ArrayList<>();
-                        newArr.add(u);
-                        incomingVertices.put(neighbor,newArr);
-                    }
+            if (neighbors== null || neighbors.length<1) {
+                continue;
+            }
+            for (int neighbor: neighbors) {
+                if (incomingVertices.containsKey(neighbor)){
+                    ArrayList<Integer> neighborIncomingArray = incomingVertices.get(neighbor);
+                    neighborIncomingArray.add(u);
+                }
+                else{
+                    ArrayList<Integer> newArr = new ArrayList<>();
+                    newArr.add(u);
+                    incomingVertices.put(neighbor,newArr);
                 }
             }
         }
@@ -153,6 +154,8 @@ public class DirectedGraph {
     public HashSet<Integer> getVertices(){
         return this.vertices;
     }
+
+    public HashMap<Integer, ArrayList<Integer>> getIncomingVertices() {return this.incomingVertices;}
 
     public ArrayList<Integer> getSources(){
         return this.sources;

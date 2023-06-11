@@ -46,12 +46,18 @@ public class DirectedGraphTest {
     }
 
     @Test
-    public void getVerticesTest() {
+    public void updateVerticesTest() {
         assertArrayEquals(new Integer[]{0,1,2,3,4,5,6}, G.getVertices().toArray());
     }
 
     @Test
-    public void getSources() {
+    public void updateIncomeVerticesTest(){
+        ArrayList<Integer> sixIncomingVertices = G.getIncomingVertices().get(6);
+        assertEquals(new ArrayList<Integer>(Arrays.asList(0,2,3,5)),sixIncomingVertices);
+    }
+
+    @Test
+    public void updateSourcesTest() {
 //        System.out.println(G.getSources().toString());
         assertArrayEquals(new Integer[]{2,3}, G.getSources().toArray());
     }
@@ -66,14 +72,14 @@ public class DirectedGraphTest {
     }
 
     @Test
-    public void getSinks() {
+    public void updateSinksTest() {
         G.addEdge(2,7);
         assertArrayEquals(new Integer[]{0,1,2,3,4,5,6,7},G.getVertices().toArray());
         assertArrayEquals(new Integer[]{7}, G.getSinks().toArray());
     }
 
     @Test
-    public void topologicalSort() {
+    public void topologicalSortTest() {
         //[3, 2, 4, 5, 6, 1, 0]
         System.out.println(G.getTraverseResultDecreseFinishTime().toString());
         assertTrue(G.isTopological(G.getTraverseResultDecreseFinishTime()));
